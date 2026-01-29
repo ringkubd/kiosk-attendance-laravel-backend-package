@@ -1,4 +1,6 @@
-# Kiosk Attendance Sync (Laravel 10 Package)
+# Kiosk Attendance Sync (Laravel 8+ Package)
+
+> Note: This package replaces the previous package `kiosk/attendance-sync` and provides a composer replacement mapping so `anwar/attendance-sync` can act as a drop-in replacement. If you maintain the Packagist entry for `kiosk/attendance-sync`, please mark it as abandoned (or delete it) and point users to `anwar/attendance-sync`. Alternatively, mark it as abandoned via the Packagist UI/API with `anwar/attendance-sync` as the suggested replacement.
 
 Laravel 10 package for syncing kiosk attendance data with multi-tenant support (org/branch/device), local image storage, and optional queue-based processing.
 
