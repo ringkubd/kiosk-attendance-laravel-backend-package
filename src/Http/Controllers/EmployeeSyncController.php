@@ -16,7 +16,7 @@ class EmployeeSyncController
         $branchId = $request->query('branch_id');
         $since = (int) $request->query('since', 0);
 
-        $query = AttendanceEmployee::query();
+        $query = AttendanceEmployee::query()->with('user');
         if ($branchId) {
             $query->where('branch_id', $branchId);
         }
