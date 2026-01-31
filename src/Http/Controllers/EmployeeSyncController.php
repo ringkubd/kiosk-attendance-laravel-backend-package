@@ -3,6 +3,7 @@
 namespace Anwar\AttendanceSync\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Anwar\AttendanceSync\Http\Requests\FaceEnrollmentRequest;
 use Anwar\AttendanceSync\Models\AttendanceEmployee;
@@ -20,7 +21,8 @@ class EmployeeSyncController
             $query->where('branch_id', $branchId);
         }
         if ($since > 0) {
-            $query->where('updated_at', '>', date('Y-m-d H:i:s', $since / 1000));
+            $sinceTimestamp = $since > 9999999999 ? (int) floor($since / 1000) : $since;
+            $query->where('updated_at', '>', Carbon::createFromTimestamp($sinceTimestamp));
         }
 
         return response()->json([
