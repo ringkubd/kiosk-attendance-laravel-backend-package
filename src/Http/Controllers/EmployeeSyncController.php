@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Anwar\AttendanceSync\Http\Requests\FaceEnrollmentRequest;
 use Anwar\AttendanceSync\Models\AttendanceEmployee;
 use Anwar\AttendanceSync\Models\AttendanceSyncLog;
+use Anwar\AttendanceSync\Resources\EmployeeResource;
 
 class EmployeeSyncController
 {
@@ -26,7 +27,7 @@ class EmployeeSyncController
         }
 
         return response()->json([
-            'employees' => $query->get(),
+            'employees' => EmployeeResource::collection($query->get()),
         ]);
     }
 
