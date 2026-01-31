@@ -21,10 +21,10 @@ class EmployeeSyncController
         if ($branchId) {
             $query->where('branch_id', $branchId);
         }
-        if ($since > 0) {
-            $sinceTimestamp = $since > 9999999999 ? (int) floor($since / 1000) : $since;
-            $query->where('updated_at', '>', Carbon::createFromTimestamp($sinceTimestamp));
-        }
+        // if ($since > 0) {
+        //     $sinceTimestamp = $since > 9999999999 ? (int) floor($since / 1000) : $since;
+        //     $query->where('updated_at', '>', Carbon::createFromTimestamp($sinceTimestamp));
+        // }
 
         return response()->json([
             'employees' => EmployeeResource::collection($query->get()),
